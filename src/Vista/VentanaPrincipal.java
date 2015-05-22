@@ -38,8 +38,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 	private JButton btnSalir;
 	private JPanel panelBotones;
 
-
-
 	public VentanaPrincipal (){
 
 
@@ -88,11 +86,8 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 		panelcompleto.setBackground(new Color(255, 194, 92));
 		panelcompleto.add(panel);		
 		panelcompleto.add(panelBotones);	
-
 		add(panelcompleto);
-
 	}
-
 
 	public void crearBiblioteca() throws Exception  {
 		Biblioteca.getInstance().setArchivoClientes("data/archivoClientes.txt");
@@ -137,10 +132,6 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 		return panel;
 	}
 
-
-
-
-
 	public void setPanel(PanelPrincipal panel) {
 		this.panel = panel;
 	}
@@ -153,41 +144,21 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 		return btnIngresar;
 	}
 
-
-
-
-
 	public void setBtnIngresar(JButton btnIngresar) {
 		this.btnIngresar = btnIngresar;
 	}
-
-
-
-
 
 	public JButton getBtnSalir() {
 		return btnSalir;
 	}
 
-
-
-
-
 	public void setBtnSalir(JButton btnSalir) {
 		this.btnSalir = btnSalir;
 	}
 
-
-
-
-
 	public JPanel getPanelBotones() {
 		return panelBotones;
 	}
-
-
-
-
 
 	public void setPanelBotones(JPanel panelBotones) {
 		this.panelBotones = panelBotones;

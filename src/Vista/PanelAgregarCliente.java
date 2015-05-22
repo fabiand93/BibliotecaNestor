@@ -27,9 +27,6 @@ public class PanelAgregarCliente extends JPanel implements ActionListener {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	private JTextArea txtArea;
-
 	private JLabel lblInicial;
 	private JLabel lblNombre;
 	private JLabel lblApellido;
@@ -43,19 +40,12 @@ public class PanelAgregarCliente extends JPanel implements ActionListener {
 	private JTextField txtNombreUsuario;
 	private JTextField txtPassword;
 	
-    private JButton btnAgregar, btnCancelar, btnAtras;
+	private VentanaAgregarCliente ventana;
 	
-	private VentanaAdministrador ventanaAdministrador;
+    private JButton btnAgregar, btnAtras;
 	
-
-	public PanelAgregarCliente() {
-		
-		
-		
-		
-
-
-
+	public PanelAgregarCliente(VentanaAgregarCliente ventana) {
+		this.ventana = ventana;
 		lblInicial = new JLabel("Introduzca los datos del Cliente");
 		lblId = new JLabel("ID:");
 		txtId = new JTextField(10);
@@ -70,10 +60,8 @@ public class PanelAgregarCliente extends JPanel implements ActionListener {
 
 		btnAgregar = new JButton("Agregar");
 		btnAgregar.addActionListener(this);
-		btnCancelar = new JButton("Cancelar");
-		btnCancelar.addActionListener(this);
-		 btnAtras = new JButton("Atras");
-		 btnAtras.addActionListener(this);
+		btnAtras = new JButton("Atras");
+		btnAtras.addActionListener(this);
 
 		//CREACION Y POSICIONAMIENTO DEL PANEL DE DATOS
 
@@ -150,12 +138,6 @@ public class PanelAgregarCliente extends JPanel implements ActionListener {
 		gbc.fill = GridBagConstraints.BOTH;
 		gbc.anchor = GridBagConstraints.WEST;
 	    panelDatos.add(txtApellido, gbc);
-
-
-
-
-
-
 
 		gbc.gridx = 0;
 		gbc.gridy = 8;
@@ -369,34 +351,22 @@ public class PanelAgregarCliente extends JPanel implements ActionListener {
 		this.btnAgregar = btnAgregar;
 	}
 
-	public JButton getBtnCancelar() {
-		return btnCancelar;
-	}
-
-	public void setBtnCancelar(JButton btnCancelar) {
-		this.btnCancelar = btnCancelar;
-	}
-
 	public JButton getBtnRestablecer() {
 		return  btnAtras;
 	}
 
-	public void setBtnRestablecer(JButton btnRestablecer) {
-		this. btnAtras = btnRestablecer;
+	public void setBtnRestablecer(JButton btnAtras) {
+		this. btnAtras = btnAtras;
 	}
 
 	public void actionPerformed(ActionEvent evento) {
 
 		if (evento.getSource() ==  btnAtras) {
-			
 			this.setVisible(false);
-			ventanaAdministrador.setVisible(true);
-			
-		
-				
-			
-
+			this.setLayout(null);
+			ventana.cerrar();
 		}
+		
 		if (evento.getSource() == btnAgregar) {
 			String id = txtId.getText();
 			String nombre = txtNombre.getText();

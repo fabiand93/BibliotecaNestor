@@ -11,7 +11,7 @@ public class VentanaAgregarCliente extends JDialog {
 	
 	public VentanaAgregarCliente() {
 
-		panel1 = new PanelAgregarCliente ();
+		panel1 = new PanelAgregarCliente (this);
 		this.add(panel1);
 		this.setTitle("Agregar Cliente");
 		this.setSize(360, 600);
@@ -20,8 +20,11 @@ public class VentanaAgregarCliente extends JDialog {
 		this.setLocationRelativeTo(null);
 		this.setResizable(true);
 		this.setVisible(true);
-		dispose();
 
 
 	}
+	public void cerrar() {
+		this.dispose();
+	}
+	
 }

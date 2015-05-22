@@ -21,8 +21,17 @@ import Logica.Biblioteca;
 
 public class PanelAdministrador extends JPanel implements ActionListener {
 
-	private JLabel lbli, lbln, image;
-	private JButton btnAgregarCliente, btnEditarCliente, btnEliminarCliente , btnAgregarLibro,  btnEliminarLibro, btnEditarLibro;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private JButton btnAgregarCliente,
+					btnEditarCliente,
+					btnEliminarCliente,
+					btnAgregarLibro,
+					btnEliminarLibro,
+					btnEditarLibro;
 
 	Biblioteca e = Biblioteca.getInstance();
 
@@ -183,8 +192,6 @@ public class PanelAdministrador extends JPanel implements ActionListener {
 		// COLOR DEL FONDO
 		this.setBackground(new Color(255, 194, 92));
 
-		Font osb = new Font("Open Sans", Font.BOLD, 15); // Tipo de letra
-		Font os = new Font("Open Sans", Font.PLAIN, 14);
 
 
 	}
@@ -195,19 +202,13 @@ public class PanelAdministrador extends JPanel implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent evento) {
 		if (evento.getSource() == btnAgregarCliente) {
-
-
 			VentanaAgregarCliente v1 = new VentanaAgregarCliente();
 		}
 		if (evento.getSource() == btnEditarCliente) {
-
 			VentanaEditarCliente v2 = new VentanaEditarCliente();
-
 		}
 			if (evento.getSource() == btnEliminarCliente) {
-	
 				VentanaEliminarCliente v3 = new VentanaEliminarCliente();
-	
 			}
 			
 			if (evento.getSource() == btnAgregarLibro) {
@@ -215,11 +216,6 @@ public class PanelAdministrador extends JPanel implements ActionListener {
 		VentanaAgregarLibro v4= new VentanaAgregarLibro();
 
 			}
-			
-					
-
-
 	}
-
 }
 

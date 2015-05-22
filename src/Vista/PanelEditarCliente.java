@@ -459,9 +459,20 @@ public class PanelEditarCliente extends JPanel implements ActionListener {
 			}
 			else if (evento.getSource()==btnModificar){
 				
-				UsuarioCliente clienteNuevo;
-				//clienteNuevo = Biblioteca.getInstance().consultarCliente(txtBusqueda.getText());
-				//clienteNuevo =Biblioteca.getInstance().editarCliente(txtId.getText(), txtNombre.getText(), txtApellido.getText(), txtUser.getText(), txtPassword.getText());
+				UsuarioCliente clienteEditado;
+				try {
+					clienteEditado=Biblioteca.getInstance().consultarCliente(txtBusqueda.getText());
+					clienteEditado.setNombre(txtNombre.getText());
+					clienteEditado.setApellido(txtApellido.getText());
+					clienteEditado.setUsuario(txtUser.getText());
+					clienteEditado.setContrasena(txtPassword.getText());
+					JOptionPane.showMessageDialog(this, "El cliente ha sido editado");
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(this, e.getMessage());
+					
+				}
+				
 				}
 			}		
 }
