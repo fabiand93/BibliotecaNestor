@@ -1,0 +1,6 @@
+12345,carlos,andres,carlitos,qqqqqq
+123,roa,daniel,danielito,adivina
+246,amparo,mejia,amejia,890
+1996,carlos,andres,pena,suarez
+13579,pablo,juan,juanito,jpalvarez
+987,roa,daniel,danie,dana
