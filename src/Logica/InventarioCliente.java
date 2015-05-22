@@ -1,7 +1,6 @@
 package Logica;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -20,7 +19,6 @@ public class InventarioCliente {
 			UsuarioCliente cliente = new UsuarioCliente(id,nombre,apellido,usuario,contrasena);
 			listaCliente.add(cliente);
 			this.guardarDatos();
-
 		}
 		else
 			throw new Exception ("El Cliente con documento: "+id+" Ya Existe");
@@ -61,6 +59,7 @@ public class InventarioCliente {
 		for (int i = 0; i <listaCliente.size(); i++) {
 			if(id.equals(listaCliente.get(i).getId())){
 				listaCliente.remove(i);
+				this.guardarDatos();
 			}
 		}
 	}
@@ -90,7 +89,7 @@ public class InventarioCliente {
 		}
 		return pos;
 	}
-
+	//EDITAR cliente
 	public void editarCliente(String id,String nombre,String apellido,String usuario,String contrasena) throws Exception {
 		boolean encontro = false;
 		if(existeCliente(id)){
@@ -101,6 +100,7 @@ public class InventarioCliente {
 				listaCliente.get(i).setApellido(apellido);
 				listaCliente.get(i).setUsuario(usuario);
 				listaCliente.get(i).setContrasena(contrasena);
+				this.guardarDatos();
 			}
 		}
 	}
@@ -127,7 +127,6 @@ public class InventarioCliente {
 
 	public void guardarDatos() throws IOException{
 		String linea=null;
-
 		Escritor escritor=new Escritor(archivoClientes);
 		for(int i=0;i<listaCliente.size();i++){
 			linea=listaCliente.get(i).toString();

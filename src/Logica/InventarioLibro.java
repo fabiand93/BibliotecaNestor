@@ -65,9 +65,6 @@ public class InventarioLibro {
 	//ELIMINAR LIBRO
 	public void eliminarLibro (String isbn) throws Exception {
 		System.out.println("1");
-		boolean pos=existeLibro(isbn);
-
-
 		for (int i = 0; i < listaLibro.size(); i++) {
 			if(isbn.equals(listaLibro.get(i).getIsbn())){
 				listaLibro.remove(i);
@@ -75,9 +72,6 @@ public class InventarioLibro {
 			}
 			else
 				throw new Exception("No se encontro ningun libro="+isbn+"no existe");
-
-
-
 		}
 	}
 

@@ -47,7 +47,12 @@ public class Biblioteca {
 	public void editarCliente(String id, String nombre,String apellido,String usuario, String contrasena) throws Exception {
 		inventarioCliente.editarCliente(id,nombre,apellido,usuario,contrasena);
 	}
-
+	
+	//eliminar cliente
+	public void eliminarCliente(String id1) throws Exception{
+		inventarioCliente.eliminarCliente(id1);
+	}
+	
 	//mostrar lista cliente
 	public void  mostrarLista() throws Exception{
 		inventarioCliente.mostrarLista();
@@ -95,9 +100,7 @@ public class Biblioteca {
 	public void eliminarLibro(String isbn) throws Exception{
 		inventarioLibro.eliminarLibro(isbn);
 	}
-	public void eliminarCliente(String id1) throws Exception{
-		inventarioCliente.eliminarCliente(id1);
-	}
+	
 	public void consultarLibro(String isbn) throws Exception{
 		inventarioLibro.consultarLibro(isbn);
 	}
