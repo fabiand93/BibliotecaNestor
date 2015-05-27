@@ -3,12 +3,12 @@ package Logica;
 import java.util.ArrayList;
 
 import Logica.UsuarioAdministrador;
-import Logica.UsuarioCliente;
+import Logica.Cliente;
 
 public class UsuariosSistema {
 
 	
-	private ArrayList<UsuarioCliente> listaCliente = new ArrayList<UsuarioCliente>();
+	private ArrayList<Cliente> listaCliente = new ArrayList<Cliente>();
 	private ArrayList<UsuarioAdministrador> listaAdministrador = new ArrayList<UsuarioAdministrador>();
 
 
@@ -40,12 +40,12 @@ public class UsuariosSistema {
 	}
 
 
-	public ArrayList<UsuarioCliente> getListaCliente() {
+	public ArrayList<Cliente> getListaCliente() {
 		return listaCliente;
 	}
 
 
-	public void setListaCliente(ArrayList<UsuarioCliente> listaCliente) {
+	public void setListaCliente(ArrayList<Cliente> listaCliente) {
 		this.listaCliente = listaCliente;
 	}
 

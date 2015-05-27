@@ -7,18 +7,19 @@ import java.util.ArrayList;
 
 public class InventarioCliente {
 
-	private ArrayList<UsuarioCliente> listaCliente;
+	private ArrayList<Cliente> listaCliente;
 	private File archivoClientes;
 
 	public InventarioCliente(){
-		listaCliente = new ArrayList<UsuarioCliente>();
+		listaCliente = new ArrayList<Cliente>();
 	}
 
 	public  void agregarCliente(String id ,String nombre,String apellido,String usuario,String contrasena) throws Exception{
 		if(!existeCliente(id)){
-			UsuarioCliente cliente = new UsuarioCliente(id,nombre,apellido,usuario,contrasena);
+			Cliente cliente = new Cliente(id,nombre,apellido,usuario,contrasena);
 			listaCliente.add(cliente);
 			this.guardarDatos();
+
 		}
 		else
 			throw new Exception ("El Cliente con documento: "+id+" Ya Existe");
@@ -34,7 +35,6 @@ public class InventarioCliente {
 				for ( i = 0; i <listaCliente.size(); i++) {
 					System.out.println("tamaño: " + listaCliente.size());
 					System.out.println(listaCliente.get(i));
-					// System.out.println(listaCliente.get(i).getNombre()+""+listaCliente.get(i).getApellido() + " " + listaCliente.get(i).getId() + " " + " " + listaCliente.get(i).getUsuario() + " " + listaCliente.get(i).getContrasena() );
 				} 
 			}
 		return listaCliente.toString();
@@ -45,28 +45,39 @@ public class InventarioCliente {
 
 		boolean encontro = false;
 		for (int i = 0; (i <listaCliente.size() && !encontro); i++) {
-			System.out.println(listaCliente.get(i));
-			//System.out.println(listaCliente.get(i).getNombre()+""+listaCliente.get(i).getApellido() + " " + listaCliente.get(i).getId() + " " + " " + listaCliente.get(i).getUsuario() + " " + listaCliente.get(i).getContrasena() );
 			if(id.equals(listaCliente.get(i).getId()))    {
 				encontro = true;
 			}
 		}
 		return encontro;
 	}
+	
+	public boolean existeContrasena(String contrasena)throws Exception{
+
+		boolean encontro = false;
+		for (int i = 0; (i <listaCliente.size() && !encontro); i++) {
+			if(contrasena.equals(listaCliente.get(i).getContrasena()))    {
+				encontro = true;
+			}
+		}
+		return encontro;
+	}
+	
+	
 	//ELIMINAR Cliente
-	public void eliminarCliente (String id) throws Exception {
-		System.out.println("Eliminando...");
+	public void eliminarCliente (String id)  throws Exception {
 		for (int i = 0; i <listaCliente.size(); i++) {
 			if(id.equals(listaCliente.get(i).getId())){
 				listaCliente.remove(i);
-				this.guardarDatos();
 			}
+			
 		}
+		
 	}
-
+	
 	//Consultar Cliente
-	public UsuarioCliente consultarCliente(String id) throws Exception{
-		UsuarioCliente cliente = null;
+	public Cliente consultarCliente(String id) throws Exception{
+		Cliente cliente = null;
 		boolean encontro =false;
 		for (int i = 0; (i < listaCliente.size() && !encontro); i++) {
 			if(id.equals(listaCliente.get(i).getId())){
@@ -77,7 +88,7 @@ public class InventarioCliente {
 		return cliente;
 	}
 
-	//CALCULAR POSICION
+//	CALCULAR POSICION
 	public int calcularPosicion(String id) {
 		boolean encontro = false;
 		int pos = -1;
@@ -89,8 +100,12 @@ public class InventarioCliente {
 		}
 		return pos;
 	}
-	//EDITAR cliente
-	public void editarCliente(String id,String nombre,String apellido,String usuario,String contrasena) throws Exception {
+
+	public void editarCliente(String id,
+			String nombre,
+			String apellido,
+			String usuario,
+			String contrasena) throws Exception {
 		boolean encontro = false;
 		if(existeCliente(id)){
 		for (int i = 0; (i < listaCliente.size() && !encontro); i++) {
@@ -98,9 +113,9 @@ public class InventarioCliente {
 				encontro = true;
 				listaCliente.get(i).setNombre(nombre);
 				listaCliente.get(i).setApellido(apellido);
+				listaCliente.get(i).setId(id);
 				listaCliente.get(i).setUsuario(usuario);
 				listaCliente.get(i).setContrasena(contrasena);
-				this.guardarDatos();
 			}
 		}
 	}
@@ -118,7 +133,6 @@ public class InventarioCliente {
 		String[] datos;
 		lector = new Lector(archivoClientes);
 
-
 		while((lineaLeida=lector.leerLinea())!=null){
 			datos= lineaLeida.split(",");
 			agregarCliente(datos[0],datos[1],datos[2],datos[3],datos[4]);
@@ -127,6 +141,7 @@ public class InventarioCliente {
 
 	public void guardarDatos() throws IOException{
 		String linea=null;
+
 		Escritor escritor=new Escritor(archivoClientes);
 		for(int i=0;i<listaCliente.size();i++){
 			linea=listaCliente.get(i).toString();
@@ -143,12 +158,23 @@ public class InventarioCliente {
 		return "" +listaCliente;
 	}
 
-	public ArrayList<UsuarioCliente> getListaCliente() {
+	public ArrayList<Cliente> getListaCliente() {
 		return listaCliente;
 	}
 
-	public void setListaCliente(ArrayList<UsuarioCliente> listaCliente) {
+	public void setListaCliente(ArrayList<Cliente> listaCliente) {
 		this.listaCliente = listaCliente;
+	}
+
+	public boolean existeUsuario(String usuario) {
+		boolean encontro = false;
+		for (int i = 0; (i <listaCliente.size() && !encontro); i++) {
+			if(usuario.equals(listaCliente.get(i).getUsuario()))    {
+				encontro = true;
+			}
+		}
+		return encontro;
+		
 	}
 
 }

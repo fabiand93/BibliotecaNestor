@@ -1,17 +1,9 @@
 package Vista;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.Font;
 import java.awt.Color;
-import java.awt.Choice;
-import java.awt.Image;
 import java.awt.Insets;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -20,18 +12,14 @@ import javax.swing.*;
 import Logica.Biblioteca;
 
 public class PanelAdministrador extends JPanel implements ActionListener {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private JButton btnAgregarCliente,
-					btnEditarCliente,
-					btnEliminarCliente,
-					btnAgregarLibro,
-					btnEliminarLibro,
-					btnEditarLibro;
+	btnEditarCliente,
+	btnEliminarCliente,
+	btnAgregarLibro,
+	btnEliminarLibro,
+	btnEditarLibro;
 
 	Biblioteca e = Biblioteca.getInstance();
 
@@ -73,9 +61,10 @@ public class PanelAdministrador extends JPanel implements ActionListener {
 		btnAgregarLibro.setBorderPainted(false);
 
 
-		//BOTON EDITAR LIBRO
-		ImageIcon iconEditarMembresia = new ImageIcon(getClass().getResource("../Imagenes/editarlibro.png"));
-		ImageIcon iEscalaEditarLibro = new ImageIcon(iconEditarMembresia.getImage().getScaledInstance(70, 105, java.awt.Image.SCALE_DEFAULT));
+		btnEditarLibro = new JButton("EditarLibro");
+		btnEditarLibro.addActionListener(this);
+		ImageIcon iconEditarLibro = new ImageIcon(getClass().getResource("../Imagenes/editarlibro.png"));
+		ImageIcon iEscalaEditarLibro = new ImageIcon(iconEditarLibro.getImage().getScaledInstance(70, 105, java.awt.Image.SCALE_DEFAULT));
 		btnEditarLibro = new JButton(iEscalaEditarLibro);
 		btnEditarLibro.addActionListener(this);
 		btnEditarLibro.setBackground(null);
@@ -93,7 +82,7 @@ public class PanelAdministrador extends JPanel implements ActionListener {
 		//Sub-Panel
 		JPanel panelDatos = new JPanel();
 
-		//CAMBIO DE CONFIGURACION DE DISE�O DEL PANEL
+		//CAMBIO DE CONFIGURACION DE DISEï¿½O DEL PANEL
 		panelDatos.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 
@@ -153,7 +142,7 @@ public class PanelAdministrador extends JPanel implements ActionListener {
 		gbc.insets = new Insets(3, 3, 3, 3);
 		gbc.fill = GridBagConstraints.BOTH;
 		gbc.anchor = GridBagConstraints.WEST;
-		panelDatos.add(btnEliminarLibro, gbc);
+		panelDatos.add(btnEditarLibro, gbc);
 
 		gbc.gridx = 2;
 		gbc.gridy = 1;
@@ -164,7 +153,7 @@ public class PanelAdministrador extends JPanel implements ActionListener {
 		gbc.insets = new Insets(3, 3, 3, 3);
 		gbc.fill = GridBagConstraints.BOTH;
 		gbc.anchor = GridBagConstraints.WEST;
-		panelDatos.add(btnEditarLibro, gbc);
+		panelDatos.add(btnEliminarLibro, gbc);
 
 		//FONDO TRANSPARENTE AL PANEL DATOS
 		panelDatos.setBackground(null);
@@ -193,13 +182,13 @@ public class PanelAdministrador extends JPanel implements ActionListener {
 		this.setBackground(new Color(255, 194, 92));
 
 
-
 	}
 
 	//ACTION PERFORMED
 	/**
 	 * Metodo que se encarga de capturar los eventos que ocurran en el JPanel
 	 */
+	@SuppressWarnings("unused")
 	public void actionPerformed(ActionEvent evento) {
 		if (evento.getSource() == btnAgregarCliente) {
 			VentanaAgregarCliente v1 = new VentanaAgregarCliente();
@@ -207,15 +196,23 @@ public class PanelAdministrador extends JPanel implements ActionListener {
 		if (evento.getSource() == btnEditarCliente) {
 			VentanaEditarCliente v2 = new VentanaEditarCliente();
 		}
-			if (evento.getSource() == btnEliminarCliente) {
-				VentanaEliminarCliente v3 = new VentanaEliminarCliente();
-			}
-			
-			if (evento.getSource() == btnAgregarLibro) {
+		if (evento.getSource() == btnEliminarCliente) {
+			VentanaEliminarCliente v3 = new VentanaEliminarCliente();
+		}
 
-		VentanaAgregarLibro v4= new VentanaAgregarLibro();
+		if (evento.getSource() == btnAgregarLibro) {
 
-			}
+			VentanaAgregarLibro v4= new VentanaAgregarLibro();
+
+		}
+		if (evento.getSource() == btnEditarLibro) {
+
+			VentanaEditarLibro v5= new VentanaEditarLibro();
+
+		}
+		if (evento.getSource() == btnEliminarLibro) {
+
+			VentanaEliminarLibro v6= new VentanaEliminarLibro();
+		}
 	}
 }
-

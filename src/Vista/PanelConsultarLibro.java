@@ -7,20 +7,17 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Calendar;
 
 import javax.swing.*;
-
-import Logica.Biblioteca;
-import Logica.UsuarioCliente;
-
 
 
 public class PanelConsultarLibro<isEmpty> extends JPanel implements ActionListener {
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JLabel lblInicial;
 	private JLabel lblNombreAutor;
 	private JLabel lblTituloLibro;
@@ -29,6 +26,7 @@ public class PanelConsultarLibro<isEmpty> extends JPanel implements ActionListen
 	private JTextField txtNombreAutor;
 	private JTextField txtTituloLibro;
 	
+	@SuppressWarnings("unused")
 	private JLabel lbli, lbln, image;
 	
 

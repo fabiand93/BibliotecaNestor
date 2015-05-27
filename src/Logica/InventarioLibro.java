@@ -1,11 +1,14 @@
 package Logica;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
 public class InventarioLibro {
 
 	private ArrayList<Libro> listaLibro;
+	private File archivoLibros;
 
 	public InventarioLibro(){
 
@@ -15,16 +18,14 @@ public class InventarioLibro {
 
 	//Agregar al LIBRO 1
 
-	public  void agregarLibro(String isbn,String nombreAutor,String tituloLibro,String anio, int cantidadLibros) throws Exception{
-
-		boolean existe = existeLibro(isbn);
-
-		if (existe)
-				throw new Exception ("El libro con isbn "+isbn);
-		else {
-			Libro libro = new Libro(isbn,nombreAutor, tituloLibro,anio,  cantidadLibros);
+	public  void agregarLibro(String isbn,String nombreAutor,String tituloLibro,String anio, String cantidadLibros) throws Exception{
+		if(!existeLibro(isbn)){
+			Libro libro=new Libro(isbn,nombreAutor,tituloLibro,anio,cantidadLibros);
 			listaLibro.add(libro);
+			guardarDatosLibros();
 		}
+		else
+			throw new Exception ("El libro con ISBN: "+isbn+" Ya Existe");
 	}
 
 
@@ -47,7 +48,6 @@ public class InventarioLibro {
 
 		boolean encontro = false;
 		for (int i = 0; (i < listaLibro.size() && !encontro); i++) {
-			System.out.println(listaLibro.get(i).getIsbn()+""+listaLibro.get(i).getNombreAutor() + " " + listaLibro.get(i).getTituloLibro() + " " + listaLibro.get(i).getAnio() + " "+listaLibro.get(i).getCantidadLibros() );
 			if(isbn.equals(listaLibro.get(i).getIsbn()))	{
 				encontro = true;
 
@@ -63,32 +63,37 @@ public class InventarioLibro {
 
 
 	//ELIMINAR LIBRO
+	@SuppressWarnings("unused")
 	public void eliminarLibro (String isbn) throws Exception {
 		System.out.println("1");
+		boolean pos=existeLibro(isbn);
+
+
 		for (int i = 0; i < listaLibro.size(); i++) {
 			if(isbn.equals(listaLibro.get(i).getIsbn())){
 				listaLibro.remove(i);
 
 			}
 			else
-				throw new Exception("No se encontro ningun libro="+isbn+"no existe");
+				throw new Exception("No se encontro ningun libro con ISBN="+isbn);
+
+
+
 		}
 	}
 
 	//Consultar LIBRO
 
 	public Libro consultarLibro(String isbn) throws Exception{
-		Libro libro = listaLibro.get(this.calcularPosicionLibro(isbn));
-
+		Libro libro = null;
 		boolean encontro =false;
 		for (int i = 0; (i < listaLibro.size() && !encontro); i++) {
-			if(isbn.equals(listaLibro.get(i).getTituloLibro()))	{
+			if(isbn.equals(listaLibro.get(i).getIsbn()))	{
 				encontro = true;
+				libro=listaLibro.get(i);
 
 
 			}
-			else
-				throw new Exception("No se encontro ningun libro="+isbn+"no existe");
 
 		}
 		return libro;
@@ -110,19 +115,54 @@ public class InventarioLibro {
 		return pos;
 	}
 
-	public void editarLibro(String nombreLibro , String isbn, int cantidadLibros ) {
+	public void editarLibro(String isbn,
+			String nombreAutor,
+			String tituloLibro,
+			String anio,
+			String cantidadLibros ) throws Exception {
 		boolean encontro = false;
-		for (int i = 0; (i < listaLibro.size() && !encontro); i++) {
-			if(nombreLibro.equals(listaLibro.get(i).getIsbn()))    {
-				encontro = true;
+		if(existeLibro(isbn)){
+			for (int i = 0; (i < listaLibro.size() && !encontro); i++) {
+				if(isbn.equals(listaLibro.get(i).getIsbn()))    {
+					encontro = true;
+					listaLibro.get(i).setIsbn(isbn);
+					listaLibro.get(i).setNombreAutor(nombreAutor);
+					listaLibro.get(i).setIsbn(tituloLibro);
+					listaLibro.get(i).setAnio(anio);
+					listaLibro.get(i).setCantidadLibros(cantidadLibros);
 
-				listaLibro.get(i).setIsbn(isbn);
-				listaLibro.get(i).setCantidadLibros(cantidadLibros);
-
+				}
 			}
-		}}
+		}
+		else
+			throw new Exception ("No existe el libro con ISBN= "+isbn);
+	}
+
+	public void setArchivoLibros(String nombreArchivoLibro){
+		this.archivoLibros=new File(nombreArchivoLibro);
+	}
+	public void cargarDatosLibros() throws Exception{
+		Lector lector;
+		String lineaLeida=null;
+		String[] datos;
+		lector = new Lector(archivoLibros);
 
 
+		while((lineaLeida=lector.leerLinea())!=null){
+			datos= lineaLeida.split(",");
+			agregarLibro(datos[0],datos[1],datos[2],datos[3],datos[4]);
+		}
+	}
+	public void guardarDatosLibros() throws IOException{
+		String linea=null;
+
+		Escritor escritorLibros=new Escritor(archivoLibros);
+		for(int i=0;i<listaLibro.size();i++){
+			linea=listaLibro.get(i).toString();
+			escritorLibros.escribir(linea);
+		}
+		escritorLibros.cerrar();
+	}
 	//total clientes//
 	public int totalLibros(){
 		return listaLibro.size();

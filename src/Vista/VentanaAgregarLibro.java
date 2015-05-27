@@ -11,10 +11,10 @@ public class VentanaAgregarLibro extends JDialog {
 	
 	public VentanaAgregarLibro() {
 
-		panel2 = new PanelAgregarLibro ();
+		panel2 = new PanelAgregarLibro (this);
 		this.add(panel2);
 		this.setTitle("Agregar Libro");
-		this.setSize(360, 600);
+		this.setSize(630, 485);
 		this.setModal(true);
 		this.setIconImage(new ImageIcon(getClass().getResource("../imagenes/agregarlibro.png")).getImage());
 		this.setLocationRelativeTo(null);
@@ -23,5 +23,11 @@ public class VentanaAgregarLibro extends JDialog {
 		dispose();
 
 
+	}
+
+
+	public void cerrar() {
+		this.dispose();
+		
 	}
 }

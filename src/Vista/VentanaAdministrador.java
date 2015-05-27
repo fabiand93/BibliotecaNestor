@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import Logica.UsuarioCliente;
+import Logica.Cliente;
 import Logica.Biblioteca;
 import Logica.Escritor;
 
@@ -39,7 +39,7 @@ public class VentanaAdministrador extends JFrame implements ActionListener {
 		btnSalir.setBorderPainted(false);
 		
 		this.setTitle("Administrador");
-		this.setSize(440, 500);
+		this.setSize(630, 485);
 		this.setResizable(false);
 		this.setVisible(true);
 		this.setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo-simple.png")).getImage());
@@ -53,14 +53,13 @@ public class VentanaAdministrador extends JFrame implements ActionListener {
 		
 	}
 	
-    private void setModal(boolean modal) {
-			// TODO Auto-generated method stub
-			
-		}
+   
+	private void setModal(boolean modal) {
+		// TODO Auto-generated method stub
+		
+	}
 
-	/**
-     * Metodo que se encarga de capturar los eventos que ocurran en el JFrame
-     */
+
 	public void actionPerformed(ActionEvent evento){
 		if (evento.getSource() == btnSalir) {
 			Biblioteca e = Biblioteca.getInstance();

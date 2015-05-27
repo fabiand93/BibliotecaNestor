@@ -7,18 +7,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Calendar;
-
 import javax.swing.*;
-
 import Logica.Biblioteca;
-import Logica.UsuarioCliente;
-import Logica.InventarioCliente;
-
-
-
 
 public class PanelAgregarCliente extends JPanel implements ActionListener {
 
@@ -64,9 +54,6 @@ public class PanelAgregarCliente extends JPanel implements ActionListener {
 		btnAtras.addActionListener(this);
 
 		//CREACION Y POSICIONAMIENTO DEL PANEL DE DATOS
-
-
-
 		JPanel panelDatos = new JPanel();
 		panelDatos.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
@@ -233,9 +220,6 @@ public class PanelAgregarCliente extends JPanel implements ActionListener {
 		lblApellido.setForeground(cTipografia);
 		lblApellido.setFont(os);
 		txtApellido.setFont(os);
-		
-
-
 
 		lblNombreUsuario.setFont(os);
 		lblNombreUsuario.setForeground(cTipografia);
@@ -374,7 +358,11 @@ public class PanelAgregarCliente extends JPanel implements ActionListener {
 			String usuario =txtNombreUsuario.getText();
 			String contrasena = txtPassword.getText(); 
 			try {
-				Biblioteca.getInstance().agregarCliente(id,nombre, apellido,  usuario, contrasena);
+				Biblioteca.getInstance().agregarCliente(id,
+						nombre,
+						apellido,
+						usuario,
+						contrasena);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				JOptionPane.showMessageDialog(this, e.getMessage());

@@ -6,21 +6,21 @@ public class Libro {
 	private String nombreAutor ;
 	private String tituloLibro;
 	private String anio;
+	private String cantidadLibros;
 	
-	private int cantidadLibros;
-	
-	
-	
-	public Libro(String isbn,String nombreAutor,String tituloLibro,String anio,  int cantidadLibros){
+		public Libro(String isbn,String nombreAutor,String tituloLibro,String anio, String cantidadLibros){
 		this.isbn=isbn;
 		this.nombreAutor=nombreAutor;
 		this.tituloLibro=tituloLibro;
 		this.anio=anio;
-	
-		
 		this.cantidadLibros=cantidadLibros;
 		
 	}
+		
+		public String toString (){		
+			return this.isbn+","+this.nombreAutor+","+this.tituloLibro+","+this.anio+","+this.cantidadLibros; 		
+		
+		}
 
 
 	
@@ -81,17 +81,21 @@ public class Libro {
 	}
 
 
-	public int getCantidadLibros() {
+
+	public String getCantidadLibros() {
 		return cantidadLibros;
 	}
 
 
-	public void setCantidadLibros(int cantidadLibros) {
+
+
+
+
+
+	public void setCantidadLibros(String cantidadLibros) {
 		this.cantidadLibros = cantidadLibros;
 	}
-	public String toString (){		
-		return isbn+","+nombreAutor+","+tituloLibro+","+anio+","+","+cantidadLibros; 		
-	
-	}
+
+
 
 }

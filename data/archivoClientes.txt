@@ -1,3 +1,5 @@
-1996,carlos,andres,pena,suarez
-13579,pablo,juan,juanito,jpalvarez
-987,roa,daniel,danie,dana
+13579,juan,pablo,juanito,jpalvarez
+987,daniel,roa,danielito,dana
+1,rafael,angel,rafaelito,angel2
+101543,Fabian,Diaz,fabi,diaz
+12345678,prueba,cliente,login,entra

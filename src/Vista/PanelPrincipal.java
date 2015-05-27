@@ -4,7 +4,6 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -35,7 +34,7 @@ public class PanelPrincipal extends JPanel {
 		
 		lblUsuario = new JLabel("Usuario: ");
 		txtUsuario = new JTextField(13);
-		lblContrasena = new JLabel("Contraseña: ");
+		lblContrasena = new JLabel("Contrasena: ");
 		pssContrasena = new JPasswordField(20);
 		imagen = new ImageIcon(getClass().getResource("../imagenes/libro.png"));
 		image = new JLabel(imagen);
@@ -172,15 +171,14 @@ public class PanelPrincipal extends JPanel {
 	}
 
 	
+
 	@SuppressWarnings("deprecation")
 	public String getTxtContrasena() {
 		return pssContrasena.getText();
 	}
 
-	/**
-	 * M�todo para sustituir el valor de txtContrase�a
-	 * @param txtContrase�a valor original ingresado en el JTextField
-	 */
+	
+	 
 	public void setTxtContrasena(String txtContrasena) {
 		String c = new String(txtContrasena);
 		this.pssContrasena.setText(c);

@@ -1,22 +1,20 @@
 package Vista;
+import java.awt.*;
+
 import javax.swing.*;
 
 
-public class VentanaAgregarCliente extends JDialog {
+public class VentanaEliminarLibro extends JDialog {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	PanelAgregarCliente panel1;
+	PanelEliminarLibro panel21;
 	
 	
-	public VentanaAgregarCliente() {
+	public VentanaEliminarLibro() {
 
-		panel1 = new PanelAgregarCliente (this);
-		this.add(panel1);
-		this.setTitle("Agregar Cliente");
-		this.setSize(360, 600);
+		panel21 = new PanelEliminarLibro(this);
+		this.add(panel21);
+		this.setTitle("ELIMINARR LIBRO");
+		this.setSize(660, 600);
 		this.setModal(true);
 		this.setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo-simple.png")).getImage());
 		this.setLocationRelativeTo(null);

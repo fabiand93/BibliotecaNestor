@@ -1,0 +1,3 @@
+123,Marquez,El coronel no tiene quien le escriba,1993,3
+874,Adolf Hitler,Mi Lucha,1956,1
+9876,Diana Neira,Manual Imagen del Hombre,2000,1
