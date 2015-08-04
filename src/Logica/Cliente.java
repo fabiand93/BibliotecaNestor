@@ -1,4 +1,7 @@
 package Logica;
+
+import java.util.ArrayList;
+
 public class Cliente extends Persona {
 
 	private String usuario;
@@ -32,6 +35,11 @@ public class Cliente extends Persona {
 
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
+	}
+
+	public ArrayList<Cliente> consultarPersona(int documento) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

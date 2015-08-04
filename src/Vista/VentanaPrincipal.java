@@ -221,10 +221,10 @@ public class VentanaPrincipal extends JFrame implements ActionListener {
 
 
 	//MAIN
-	@SuppressWarnings("unused")
+	/*@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		UsuariosSistema s = new UsuariosSistema();
 		VentanaPrincipal ventPpal = new VentanaPrincipal();
 		ventPpal.setVisible(true);
-	}
+	}*/
 }
