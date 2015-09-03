@@ -1,5 +1,5 @@
-13579,juan,pablo,juanito,jpalvarez
-987,daniel,roa,danielito,dana
-1,rafael,angel,rafaelito,angel2
-101543,Fabian,Diaz,fabi,diaz
-12345678,prueba,cliente,login,entra
+13579,pablo,juan,juanito,jpalvarez
+987,roa,daniel,danielito,dana
+1,angel,rafael,rafaelito,angel2
+101543,Diaz,Fabian,fabi,diaz
+12345678,cliente,prueba,login,entra
